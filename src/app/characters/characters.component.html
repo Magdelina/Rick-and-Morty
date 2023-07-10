@@ -1,0 +1,24 @@
+<app-spinner *ngIf="showLoading | async"></app-spinner>
+<div class="row">
+  <div class="col-xs-12">
+
+    <div class="pull-centre">
+      <div *ngFor="let character of characters">
+
+        <a [routerLink]="character.id" routerLinkActive="active">
+          <div class="hovering">
+            <nz-card nzHoverable style="width:260px" [nzCover]="coverTemplate" (click)="gettingCharacter(character.id)">
+              <nz-card-meta [nzTitle]="character.name" [nzCover]="coverTemplate"
+                [nzExtra]="extraTemplate"></nz-card-meta>
+
+            </nz-card>
+
+            <ng-template #coverTemplate>
+              <img alt="{{ character.name}}" [src]="character.image" />
+            </ng-template>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

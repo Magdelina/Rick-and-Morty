@@ -1,0 +1,20 @@
+.pull-centre {
+    display: flex;
+
+    flex-flow: row wrap;
+
+    justify-content: space-around;
+    gap: 20px 20px;
+    text-align: center;
+
+    text-size-adjust: 10px;
+}
+
+.ant-card-body {
+    background-color: aqua;
+}
+
+.hovering:hover {
+    color: cyan;
+    border-color: aqua;
+}

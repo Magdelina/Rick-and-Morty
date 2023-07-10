@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ricky-and-morty';
+  isCollapsed = false;
+  image = "https://www.exctext.com/images/rick-and-morty-font.webp";
+  showLoading: Observable<boolean>;
+
+  constructor() { }
+
 }
+

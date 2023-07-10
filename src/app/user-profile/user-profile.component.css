@@ -1,0 +1,17 @@
+.row {
+    background-color: black;
+}
+
+.centre {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+img {
+    display: auto;
+    height: 300px;
+    width: 350px;
+    vertical-align: middle;
+
+}
