@@ -17,9 +17,6 @@ export class characterService {
                 map((data) => {
                     const characters: characterResponse[] = [];
 
-                    for (let key in data) {
-                        characters.push({ ...data[key], id: +key });
-                    }
                     return data?.results;
                 })
             );

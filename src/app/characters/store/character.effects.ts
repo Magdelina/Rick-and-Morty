@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, concatMap } from "rxjs";
+import { map, concatMap, mergeMap } from "rxjs";
 import * as CharacterActions from './character.actions';
 import { characterService } from "../character.services";
 import { characterResponse } from "src/app/Models/characterResponse.model";
@@ -20,9 +20,11 @@ export class characterEfects {
             ofType(CharacterActions.getCharacters),
             concatMap(action =>
                 this.characterServices.getCharacters().pipe(
-                    map(response => {
-                        this.store.dispatch(spinnerAction({ status: false }));
-                        return CharacterActions.getCharactersSuccess({ characters: response });
+                    mergeMap(response => {
+                        return [
+                        spinnerAction({status: false}),
+                            CharacterActions.getCharactersSuccess({ characters: response })
+                        ];
                     })
                 ))
         );
@@ -33,9 +35,11 @@ export class characterEfects {
             ofType(CharacterActions.getCharacter),
             concatMap(action =>
                 this.characterServices.getCharacter(action.Index).pipe(
-                    map((response: characterResponse) => {
-                        this.store.dispatch(spinnerAction({ status: false }));
-                        return CharacterActions.getCharacterSuccess({ character: response });
+                    mergeMap((response: characterResponse) => {
+                        return [
+                            spinnerAction({ status: false }),
+                            CharacterActions.getCharacterSuccess({ character: response })
+                        ];
                     })
                 ))
         );

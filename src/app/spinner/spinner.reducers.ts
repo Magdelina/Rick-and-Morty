@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { spinnerAction } from "./spinner.actions";
+import { getCharactersSuccess } from "../characters/store/character.actions";
 
 export interface SpinnerState {
     showLoading: boolean;
@@ -15,6 +16,12 @@ const _spinnerReducer = createReducer(initialState,
         return {
             state,
             showLoading: action.status
+        };
+    }),
+    on(getCharactersSuccess, (state, action) => {
+        return {
+            state,
+            showLoading: false
         };
     })
 )

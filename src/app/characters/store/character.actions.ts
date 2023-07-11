@@ -13,8 +13,6 @@ export const getCharactersSuccess = createAction(GET_CHARACTERS_SUCCESS,
     props<{ characters: characterResponse[] }>()
 );
 
-
-
 export const getCharacter = createAction(GET_CHARACTER,
     props<{ Index: string }>()
 );

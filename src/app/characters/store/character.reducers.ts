@@ -7,7 +7,6 @@ import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 export interface CharacterState extends EntityState<characterResponse> {
     loading: boolean;
     charaterList: characterResponse[];
-    Index: string;
     characterId: string;
     character: characterResponse;
     errorMessage: string;
@@ -19,8 +18,7 @@ export const adapter: EntityAdapter<characterResponse> = createEntityAdapter<cha
 export const initialState: CharacterState = adapter.getInitialState({
     loading: true,
     charaterList: [],
-    Index: '',
-    characterId: null,
+    characterId: '',
     character: {} as characterResponse,
     errorMessage: ''
 });
@@ -41,11 +39,10 @@ export const characterReducer = createReducer(
             charaterList: characters
         }
     }),
-    on(CharacterActions.getCharacter, (state, { Index }) => {
+    on(CharacterActions.getCharacter, (state) => {
         return {
             ...state,
             loading: true,
-            characterId: Index
         }
     }),
     on(CharacterActions.getCharacterSuccess, (state, { character }) => {
@@ -56,6 +53,5 @@ export const characterReducer = createReducer(
         }
     })
 );
-
 
 export const { selectAll } = adapter.getSelectors();
