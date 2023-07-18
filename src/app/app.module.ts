@@ -4,8 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { CharactersComponent } from './characters/characters.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CharactersComponent } from './components/characters/characters.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,12 +14,13 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
-import { MapsComponent } from './user-profile/maps/maps.component';
-import { SpinnerComponent } from './spinner/spinner/spinner.component';
-import { characterEfects } from './characters/store/character.effects';
-import { characterReducer } from './characters/store/character.reducers';
-import { SpinnerReducer } from './spinner/spinner.reducers';
+import { HeaderComponent } from './components/header/header.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { characterEfects } from './store/character/character.effects';
+import { characterReducer } from './store/character/character.reducers';
+import { MapsComponent } from './components/maps/maps.component';
+import {CharacterProfileComponent } from './components/character-profile/character-profile.component';
+import { ErrorHandlingComponent } from './components/error-handling/error-handling.component';
 
 registerLocaleData(en);
 
@@ -28,18 +28,19 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    CharactersComponent,
-    UserProfileComponent,
+     CharactersComponent,
     HeaderComponent,
-    MapsComponent,
-    SpinnerComponent
+     MapsComponent,
+     SpinnerComponent,
+     CharacterProfileComponent,
+     ErrorHandlingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NzCardModule,
     HttpClientModule,
-    StoreModule.forRoot({ characters: characterReducer, spinner: SpinnerReducer }),
+    StoreModule.forRoot({ characters: characterReducer }),
     EffectsModule.forRoot([characterEfects]),
     FormsModule,
     BrowserAnimationsModule

@@ -1,16 +1,8 @@
-<div class="back-ground">
+<div class="pageWrap">
   <app-header></app-header>
-  <app-spinner *ngIf="showLoading|async"></app-spinner>
-  <div class="addImage">
-    <div class="col-xs-12">
-      <img [src]="image" alt="rick">
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+  <app-spinner *ngIf="(showLoading$ | async)"></app-spinner>
+  <img [src]="image" alt="rick">
+  <div class="row">
+    <router-outlet></router-outlet>
   </div>
 </div>

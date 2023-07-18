@@ -1,0 +1,29 @@
+.pull-centre {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    gap: 20px 20px;
+    text-align: center;
+    text-size-adjust: 10px;
+    color: #002244;
+}
+
+#screenFiller {
+    position: absolute;
+    left: calc(-50vw + 50%);
+    float: left;
+}
+
+.error-handling {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+nz-card-meta {
+    font-family: monospace;
+    font-size: large;
+    font-weight: bold;
+}

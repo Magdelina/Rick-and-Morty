@@ -1,0 +1,15 @@
+.container-fluid{
+    font-family: monospace;
+    font-size: large;
+    font-weight: bolder;
+    
+}
+
+.nav navbar-nav{
+    color: #002244;
+}
+
+.navbar navbar-default{
+    background-color: #F5F5F5; 
+
+}

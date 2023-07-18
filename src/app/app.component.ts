@@ -7,11 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isCollapsed = false;
-  image = "https://www.exctext.com/images/rick-and-morty-font.webp";
-  showLoading: Observable<boolean>;
-
-  constructor() { }
-
+  image = "https://www.pngall.com/wp-content/uploads/4/Rick-And-Morty-PNG-Images.png";
+  showLoading$: Observable<boolean>;
 }
 

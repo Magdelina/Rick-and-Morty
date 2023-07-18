@@ -23,6 +23,7 @@ export class MapsComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
+    tiles.addTo(this.map);
     var jittery = Array(2).fill(this.centroid).map(
       x => [x[0] + (Math.random() - .5) / 10, x[1] + (Math.random() - .5) / 10]
     ).map(
@@ -30,13 +31,7 @@ export class MapsComponent implements OnInit {
     ).forEach(
       x => x.addTo(this.map)
     );
-
-    tiles.addTo(this.map);
-
-
   }
-
-  constructor() { }
 
   ngOnInit(): void {
     this.initMap();

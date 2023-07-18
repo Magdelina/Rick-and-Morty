@@ -1,5 +1,5 @@
 
-export interface characterResponse {
+export interface Character {
   id: number;
   name: string;
   status: string;
@@ -9,8 +9,7 @@ export interface characterResponse {
   origin: object;
   location: object;
   image: string;
-  episode: [];
+  episodes: string[];
   url: string;
   created: string;
-
 }

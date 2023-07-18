@@ -1,18 +1,15 @@
-<app-spinner *ngIf="showLoading | async"></app-spinner>
-<div class="row">
-  <div class="col-xs-12">
-
+<app-spinner id="screenFiller" *ngIf="isCharactersLoading$ | async"></app-spinner>
+<div *ngIf="!(isCharactersLoading$ | async)" class="row">
+  <div class="col-xs-12" *ngIf="!(isError$ | async)">
     <div class="pull-centre">
-      <div *ngFor="let character of characters">
+      <div *ngFor="let character of characters$ | async">
 
         <a [routerLink]="character.id" routerLinkActive="active">
           <div class="hovering">
             <nz-card nzHoverable style="width:260px" [nzCover]="coverTemplate" (click)="gettingCharacter(character.id)">
               <nz-card-meta [nzTitle]="character.name" [nzCover]="coverTemplate"
                 [nzExtra]="extraTemplate"></nz-card-meta>
-
             </nz-card>
-
             <ng-template #coverTemplate>
               <img alt="{{ character.name}}" [src]="character.image" />
             </ng-template>
@@ -20,5 +17,8 @@
         </a>
       </div>
     </div>
+  </div>
+  <div class=" error-handling" *ngIf="(isError$ | async)">
+    <h3>error</h3>
   </div>
 </div>

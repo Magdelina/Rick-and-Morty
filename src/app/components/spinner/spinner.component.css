@@ -109,10 +109,10 @@
   left: 40vw;
   top: 30%;
   z-index: 99;
-  background-color: #fff;
+  background-color: gray;
   text-align: center;
   padding: 20px;
-  border: 1px solid #aaa;
+  opacity: .6;
 }
 
 .backdrop {
@@ -122,4 +122,10 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 98;
+}
+
+.backdrop{
+  width: 100vw;
+  height: 100vh;
+  /* position: fixed; */
 }

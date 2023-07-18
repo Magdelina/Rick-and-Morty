@@ -1,11 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { characterResponse } from '../Models/characterResponse.model';
-import { getAllCharactersSorted } from './store/character.selector';
-import { getCharacters } from './store/character.actions';
+import { Character } from '../../models/character';
+import { getCharacters } from '../../store/character/character.actions';
 import { Router } from '@angular/router';
-import { spinnerAction } from '../spinner/spinner.actions';
+import { selectCharacterListSorted, selectCharactersListError, selectIsCharacterListLoading } from 'src/app/store/character/character.selector';
 
 @Component({
   selector: 'app-characters',
@@ -14,9 +13,10 @@ import { spinnerAction } from '../spinner/spinner.actions';
 })
 export class CharactersComponent implements OnInit {
 
-  characters: characterResponse[];
-  allCharacters$: Observable<characterResponse[]>;
-  showLoading: Observable<boolean>;
+  characters$: Observable<Character[]>;
+  isCharactersLoading$: Observable<boolean>;
+  showLoading$: Observable<boolean>;
+  isError$: Observable<string>;
 
   constructor(
     private readonly store: Store,
@@ -26,12 +26,10 @@ export class CharactersComponent implements OnInit {
 
   ngOnInit(): void {
     this.cdr.detectChanges();
-    this.store.dispatch(spinnerAction({ status: true }));
     this.store.dispatch(getCharacters());
-    this.allCharacters$ = this.store.select(getAllCharactersSorted);
-    this.store.select(getAllCharactersSorted).subscribe((c) => {
-      this.characters = c;
-    })
+    this.isCharactersLoading$ = this.store.select(selectIsCharacterListLoading);
+    this.characters$ = this.store.select(selectCharacterListSorted);
+    this.isError$ = this.store.select(selectCharactersListError);
   }
 
   gettingCharacter(Index: string) {
